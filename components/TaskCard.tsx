@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Task, Employee, Project } from '../types';
 import { calculateTaskPriority, formatDate } from '../utils';
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { CheckBadgeIcon } from './icons/CheckBadgeIcon';
 
 interface TaskCardProps {

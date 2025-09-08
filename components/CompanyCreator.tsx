@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import { AIChatWizard } from './AIChatWizard';
 import type { ChatMessage, Company, InitialStructureProposal } from '../types';
@@ -10,14 +8,14 @@ import { UserIcon } from './icons/UserIcon';
 import { ServiceError } from '../services/errors';
 
 interface CompanyCreatorProps {
-  onCompanyCreated: (companyData: Omit<Company, 'id'>, initialStructure: InitialStructureProposal) => void;
+  onCompanyCreated: (companyData: Omit<Company, 'id' | 'userId'>, initialStructure: InitialStructureProposal) => void;
 }
 
 type Stage = 'chat' | 'summarizing' | 'proposing' | 'review' | 'error';
 
 export const CompanyCreator: React.FC<CompanyCreatorProps> = ({ onCompanyCreated }) => {
   const [stage, setStage] = useState<Stage>('chat');
-  const [companyData, setCompanyData] = useState<Omit<Company, 'id'> | null>(null);
+  const [companyData, setCompanyData] = useState<Omit<Company, 'id' | 'userId'> | null>(null);
   const [proposal, setProposal] = useState<InitialStructureProposal | null>(null);
   const [selections, setSelections] = useState<Record<string, { selected: boolean; employees: Record<string, boolean> }>>({});
   const [error, setError] = useState('');

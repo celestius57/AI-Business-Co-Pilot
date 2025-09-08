@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { ChatMessage, Employee, SoftwareAsset, AssetAction } from '../types';
-// FIX: Corrected import path for useAuth
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { getLondonTimestamp, formatTimestamp } from '../utils';
 import { getAssetManagerResponse } from '../services/geminiService';
 import { ServiceError } from '../services/errors';
@@ -100,7 +99,6 @@ export const AssetManagerChat: React.FC<AssetManagerChatProps> = ({
 
         } catch (error) {
             const errorMessage = error instanceof ServiceError ? error.userMessage : 'An error occurred. Please try again.';
-            // FIX: Add 'as const' to role to fix TypeScript type error
             setHistory(prev => [...prev, { role: 'model' as const, text: errorMessage, timestamp: getLondonTimestamp() }]);
         } finally {
             setIsLoading(false);

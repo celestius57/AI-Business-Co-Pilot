@@ -3,7 +3,7 @@ import type { Event, Employee } from '../types';
 import { XMarkIcon } from './icons/XMarkIcon';
 import { UserGroupIcon } from './icons/UserGroupIcon';
 import { formatTimestamp } from '../utils';
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { PencilIcon } from './icons/PencilIcon';
 import { VideoCameraIcon } from './icons/VideoCameraIcon';
 

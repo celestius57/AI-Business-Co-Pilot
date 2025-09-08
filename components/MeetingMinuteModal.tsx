@@ -1,7 +1,6 @@
 import React from 'react';
 import type { MeetingMinute } from '../types';
-// FIX: Corrected import path for useAuth
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { formatTimestamp } from '../utils';
 import { XMarkIcon } from './icons/XMarkIcon';
 

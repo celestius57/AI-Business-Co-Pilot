@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import type { Event, Employee, Task, QuickNote } from '../types';
-// FIX: Corrected import path for useAuth
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { formatTime, formatDate, calculateTaskPriority } from '../utils';
 import { ClockIcon } from './icons/ClockIcon';
 import { ClipboardCheckIcon } from './icons/ClipboardCheckIcon';

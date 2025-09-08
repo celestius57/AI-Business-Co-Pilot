@@ -4,8 +4,7 @@ import { continueConversation } from '../services/geminiService';
 import { SparklesIcon } from './icons/SparklesIcon';
 import { getLondonTimestamp, formatTimestamp } from '../utils';
 import { ServiceError } from '../services/errors';
-// FIX: Corrected import path for useAuth
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 
 interface AIChatWizardProps {
   title: string;
@@ -35,7 +34,6 @@ export const AIChatWizard: React.FC<AIChatWizardProps> = ({ title, systemInstruc
     const initialHistory = [initialUserMessage];
     try {
         const modelResponse = await continueConversation(initialHistory, systemInstruction);
-        // FIX: Add 'as const' to role to fix TypeScript type error
         setHistory([
           ...initialHistory,
           { role: 'model' as const, text: modelResponse, timestamp: getLondonTimestamp() },
@@ -43,7 +41,6 @@ export const AIChatWizard: React.FC<AIChatWizardProps> = ({ title, systemInstruc
     } catch (error) {
         console.error("Failed to start conversation:", error);
         const errorMessage = error instanceof ServiceError ? error.userMessage : 'Sorry, I am having trouble starting. Please try again later.';
-        // FIX: Add 'as const' to role to fix TypeScript type error
         setHistory([{ role: 'model' as const, text: errorMessage, timestamp: getLondonTimestamp() }]);
     } finally {
         setIsLoading(false);
@@ -75,7 +72,6 @@ export const AIChatWizard: React.FC<AIChatWizardProps> = ({ title, systemInstruc
     } catch (error) {
         console.error("Failed to get model response:", error);
         const errorMessage = error instanceof ServiceError ? error.userMessage : 'An error occurred. Please try again.';
-        // FIX: Add 'as const' to role to fix TypeScript type error
         setHistory(prev => [...prev, { role: 'model' as const, text: errorMessage, timestamp: getLondonTimestamp() }]);
     } finally {
         setIsLoading(false);

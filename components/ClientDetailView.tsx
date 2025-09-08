@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Client, Project, AppFile, Employee } from '../types';
 import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
@@ -6,7 +5,8 @@ import { PlusIcon } from './icons/PlusIcon';
 import { ProjectsIcon } from './icons/ProjectsIcon';
 import { FileIcon } from './icons/FileIcon';
 import { FileEditorModal } from './FileEditorModal';
-import { useAuth } from '../contexts/GoogleAuthContext';
+// FIX: Corrected import path for useAuth
+import { useAuth } from '../contexts/AuthContext';
 import { FileBrowser } from './FileBrowser';
 
 interface ClientDetailViewProps {

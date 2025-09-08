@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import type { User, GeneratedDocument, Project, AppFile } from '../types';
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { formatTimestamp, findUniqueFileName } from '../utils';
 import { DocumentTextIcon } from './icons/DocumentTextIcon';
 import { WordFileIcon } from './icons/WordFileIcon';

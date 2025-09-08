@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useProject } from '../contexts/ProjectContext';
 import type { ProjectPhase, ProjectPhaseStatus } from '../types';
 // FIX: Corrected import path for useAuth
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { formatDate } from '../utils';
 import { PlusIcon } from './icons/PlusIcon';
 import { PencilIcon } from './icons/PencilIcon';

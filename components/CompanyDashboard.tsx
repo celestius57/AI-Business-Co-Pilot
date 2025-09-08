@@ -1271,7 +1271,7 @@ export const CompanyDashboard: React.FC<CompanyDashboardProps> = (props) => {
                                             </div>
                                             <div className="flex items-center gap-2 shrink-0">
                                                 <button onClick={() => setSelectedEmployee(emp)} className="text-xs px-3 py-1.5 bg-slate-700 hover:bg-slate-600 font-semibold" style={{ borderRadius: 'var(--radius-sm)' }}>
-                                                    Profile
+                                                                                        Profile
                                                 </button>
                                                 <button onClick={() => setChatContext({ employee: emp })} disabled={!isApiAvailableForCompany} className="text-xs px-3 py-1.5 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] font-semibold flex items-center justify-center gap-1.5 disabled:bg-slate-600 disabled:text-slate-400 disabled:cursor-not-allowed">
                                                     <ChatBubbleIcon className="w-3 h-3" />

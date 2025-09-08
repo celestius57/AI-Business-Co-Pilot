@@ -14,7 +14,7 @@ import { ThumbUpIcon } from './icons/ThumbUpIcon';
 import { WordFileIcon } from './icons/WordFileIcon';
 import { PowerPointFileIcon } from './icons/PowerPointFileIcon';
 import { ExcelFileIcon } from './icons/ExcelFileIcon';
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { PaperClipIcon } from './icons/PaperClipIcon';
 import { XMarkIcon } from './icons/XMarkIcon';
 import { ProjectsIcon } from './icons/ProjectsIcon';
@@ -139,7 +139,7 @@ The current conversation is specifically about the "${project?.name}" project. P
     finalInstruction += `\n\n${toolsInstruction}`;
     
     return finalInstruction;
-  }, [company, employee, employees, project, projects, meetingMinutes, allMeetingMinutes, allEvents, allTasks, clients, projectContext, files, user?.settings?.currency]);
+  }, [company, employee, employees, project, projects, meetingMinutes, allMeetingMinutes, allEvents, allTasks, clients, projectContext, files, user?.settings]);
 
   useEffect(() => {
     const contextKey = `${employee.id}-${contextId}`;
@@ -170,7 +170,6 @@ The current conversation is specifically about the "${project?.name}" project. P
       } catch (error) {
         console.error("Failed to start conversation:", error);
         const errorMessage = error instanceof ServiceError ? error.userMessage : 'Sorry, I am having trouble starting. Please try again later.';
-        // FIX: Add 'as const' to role to fix TypeScript type error
         setHistory([{ role: 'model' as const, text: errorMessage, timestamp: getLondonTimestamp() }]);
         setIsLoading(false);
         conversationStartedRef.current[contextKey] = false; // Allow retry on error
@@ -475,7 +474,6 @@ The current conversation is specifically about the "${project?.name}" project. P
         if (toolTriggered?.tool === Tool.Document) {
             const { fileName, content } = toolTriggered.data;
             if (fileName && Array.isArray(content) && onAddFile && project) {
-// FIX: Added the missing `parentType` property to correctly associate the new file with its project.
                 onAddFile({
                     companyId: company.id,
                     parentId: project.id, // Saving to the root of the project

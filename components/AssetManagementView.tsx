@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { SoftwareAsset, Employee, User } from '../types';
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { formatDate, formatCurrency } from '../utils';
 import { DatabaseIcon } from './icons/DatabaseIcon';
 import { AssetManagerChat } from './AssetManagerChat';

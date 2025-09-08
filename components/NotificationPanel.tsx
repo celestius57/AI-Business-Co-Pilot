@@ -3,7 +3,7 @@ import type { Notification } from '../types';
 import { formatTimestamp } from '../utils';
 import { BellIcon } from './icons/BellIcon';
 import { XMarkIcon } from './icons/XMarkIcon';
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 
 interface NotificationPanelProps {
   notifications: Notification[];

@@ -15,7 +15,6 @@ interface EmployeeProfileModalProps {
   team: Team | undefined;
   onFire: () => void;
   onMove: () => void;
-  // FIX: Add files prop to match component usage in CompanyDashboard.tsx
   files: AppFile[];
 }
 

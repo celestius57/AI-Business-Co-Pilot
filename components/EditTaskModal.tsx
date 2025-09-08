@@ -4,8 +4,7 @@ import { XMarkIcon } from './icons/XMarkIcon';
 import { TrashIcon } from './icons/TrashIcon';
 import { ConfirmationModal } from './ConfirmationModal';
 import { getLondonTimestamp, formatTimestamp } from '../utils';
-// FIX: Corrected import path for useAuth
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 
 interface EditTaskModalProps {
   isOpen: boolean;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { User, DateFormat, UserSettings } from '../types';
 import { XMarkIcon } from './icons/XMarkIcon';
 import { GUEST_AVATARS, TIMEZONES, DATE_FORMATS } from '../utils';
@@ -28,15 +28,14 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({ isOpen, onCl
 
   if (!isOpen || !user) return null;
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const dataToUpdate: Partial<Omit<User, 'id' | 'email'>> = {
         name,
         settings,
     };
-    if (user.id === 'guest') {
-        dataToUpdate.name = 'Guest User'; // Guest name is not editable
-    }
-    updateUser(dataToUpdate);
+    
+    await updateUser(dataToUpdate);
+
     setShowSaveConfirmation(true);
     setTimeout(() => {
       setShowSaveConfirmation(false);
@@ -90,7 +89,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({ isOpen, onCl
                     <img src={user.picture} alt={user.name} className="w-10 h-10 rounded-full" />
                     <div>
                         <p className="font-semibold">{user.name}</p>
-                        <p className="text-xs text-slate-400">Guest user avatar.</p>
+                        <p className="text-xs text-slate-400">{user.email}</p>
                     </div>
                 </div>
             </div>
@@ -103,10 +102,8 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({ isOpen, onCl
                     type="text"
                     value={name}
                     onChange={e => setName(e.target.value)}
-                    disabled={user.id === 'guest'}
-                    className="w-full bg-slate-700 border border-slate-600 rounded-lg py-2 px-3 text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none disabled:bg-slate-700/50 disabled:cursor-not-allowed"
+                    className="w-full bg-slate-700 border border-slate-600 rounded-lg py-2 px-3 text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                 />
-                 {user.id === 'guest' && <p className="text-xs text-slate-500 mt-1">Display name cannot be changed in guest mode.</p>}
             </div>
 
             {/* Settings */}

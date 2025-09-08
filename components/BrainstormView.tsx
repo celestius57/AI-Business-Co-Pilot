@@ -14,7 +14,7 @@ import { CodeIcon } from './icons/CodeIcon';
 import { WordFileIcon } from './icons/WordFileIcon';
 import { PowerPointFileIcon } from './icons/PowerPointFileIcon';
 import { ExcelFileIcon } from './icons/ExcelFileIcon';
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { PaperClipIcon } from './icons/PaperClipIcon';
 import { XMarkIcon } from './icons/XMarkIcon';
 import { FileIcon } from './icons/FileIcon';
@@ -293,7 +293,6 @@ export const BrainstormView: React.FC<BrainstormViewProps> = ({ company, partici
         // We just need to wait for all promises to settle before enabling the input again.
     } catch (error) {
         console.error("Error during brainstorming stream:", error);
-        // FIX: Add 'as const' to role to fix TypeScript type error
         const finalHistory = [...updatedHistory, { role: 'model' as const, text: "A general error occurred during the brainstorm session.", timestamp: getLondonTimestamp(), employeeId: 'facilitator' }];
         setHistory(finalHistory);
     } finally {
@@ -353,7 +352,6 @@ export const BrainstormView: React.FC<BrainstormViewProps> = ({ company, partici
 
       const fileName = `${originalPrompt.substring(0, 30).replace(/\s/g, '_')}_${Date.now()}.png`;
 
-// FIX: Added the missing `parentType` property to correctly associate the saved image with its project.
       onAddFile({
           companyId: project.companyId,
           parentId: project.id,
@@ -371,7 +369,6 @@ export const BrainstormView: React.FC<BrainstormViewProps> = ({ company, partici
           setImageSaveStates(prev => ({ ...prev, [imageBase64]: false }));
       }, 3000);
   };
-// FIX: Added missing return statement for the component's JSX.
   return (
   <div className="w-full flex flex-col h-full">
     <button onClick={onBack} className="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 mb-6 font-semibold">

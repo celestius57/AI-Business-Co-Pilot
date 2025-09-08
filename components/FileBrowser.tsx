@@ -1,9 +1,6 @@
-
-
-
 import React, { useState, useMemo } from 'react';
 import type { AppFile, Employee } from '../types';
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { formatTimestamp, richTextToMarkdown, downloadFileFromContent, downloadFileFromBase64 } from '../utils';
 import { FileIcon } from './icons/FileIcon';
 import { FolderIcon } from './icons/FolderIcon';

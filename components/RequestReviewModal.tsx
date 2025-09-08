@@ -1,9 +1,8 @@
-
 import React, { useState, useMemo } from 'react';
 import type { Employee } from '../types';
 import { XMarkIcon } from './icons/XMarkIcon';
 import { SearchIcon } from './icons/SearchIcon';
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { JobProfile } from '../constants';
 
 interface RequestReviewModalProps {

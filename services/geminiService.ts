@@ -1,7 +1,3 @@
-
-
-
-
 import { GoogleGenAI, Type, Part, Content } from "@google/genai";
 import type { ChatMessage, Company, Team, Employee, HiringProposal, InitialStructureProposal, OceanProfile, ToolOutput, MoveAnalysis, MeetingMinute, SoftwareAsset, AssetAction, Client, Project, ProjectPhase, ProjectBudget, ProjectExpense, Task, RichTextBlock, RichTableBlockContent } from '../types';
 import { JOB_PROFILES, JobProfile } from "../constants";
@@ -92,9 +88,7 @@ export const continueConversation = async (history: ChatMessage[], systemInstruc
             history: geminiHistory
         });
 
-        // FIX: The sendMessage method expects an object with a 'message' property containing the parts.
         const result = await chat.sendMessage({ message: lastMessageParts });
-        // The result from `sendMessage` is an object containing the response. The text is in `result.text`.
         return result.text;
     } catch (error) {
         handleGeminiError(error, 'continuing the conversation');
@@ -396,7 +390,6 @@ export const getBrainstormResponsesStream = async (
         });
 
 
-        // FIX: The sendMessage method expects an object with a 'message' property containing the parts.
         const promise = chat.sendMessage({ message: lastMessageParts })
             .then(result => {
                 const modelResponse = result.text;

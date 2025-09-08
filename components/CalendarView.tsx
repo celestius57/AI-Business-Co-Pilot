@@ -7,7 +7,8 @@ import { CalendarIcon } from './icons/CalendarIcon';
 import { UserGroupIcon } from './icons/UserGroupIcon';
 import { DocumentTextIcon } from './icons/DocumentTextIcon';
 import { BellIcon } from './icons/BellIcon';
-import { useAuth } from '../contexts/GoogleAuthContext';
+// FIX: Corrected import path for useAuth
+import { useAuth } from '../contexts/AuthContext';
 import { getPublicHolidays } from '../services/holidayService';
 import { FlagIcon } from './icons/FlagIcon';
 import { formatTime } from '../utils';

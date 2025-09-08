@@ -21,11 +21,11 @@ export interface UserSettings {
 }
 
 export interface User {
-  id: string;
+  id: string; // This will correspond to auth.users.id
   name: string;
   email: string;
   picture: string;
-  settings?: UserSettings;
+  settings: UserSettings;
 }
 
 export interface CompanyBranding {
@@ -37,6 +37,7 @@ export interface CompanyBranding {
 
 export interface Company {
   id: string;
+  userId: string; // Foreign key to auth.users
   name: string;
   profile: string;
   objectives?: string;
@@ -87,6 +88,7 @@ export interface Project {
 
 export interface Employee {
   id: string;
+  companyId: string; // Foreign key to Company
   name: string;
   jobProfile: string; // Using string to allow for custom job titles
   teamId?: string;

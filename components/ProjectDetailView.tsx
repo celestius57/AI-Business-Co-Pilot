@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import type { Project, Employee, Task, MeetingMinute, User, AppFile } from '../types';
 import { TaskBoard } from './TaskBoard';
@@ -15,7 +14,7 @@ import { CurrencyDollarIcon } from './icons/CurrencyDollarIcon';
 import { FileIcon } from './icons/FileIcon';
 import { FileEditorModal } from './FileEditorModal';
 import { formatDate } from '../utils';
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { CompleteProjectModal } from './CompleteProjectModal';
 import { CheckBadgeIcon } from './icons/CheckBadgeIcon';
 import { ArrowUturnLeftIcon } from './icons/ArrowUturnLeftIcon';

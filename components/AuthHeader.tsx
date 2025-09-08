@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useAuth } from '../contexts/GoogleAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { BuildingIcon } from './icons/BuildingIcon';
 import { SettingsIcon } from './icons/SettingsIcon';
 import { UserProfileModal } from './UserProfileModal';
 import { BellIcon } from './icons/BellIcon';
 import { NotificationPanel } from './NotificationPanel';
 import type { Notification } from '../types';
+import { LogoutIcon } from './icons/LogoutIcon';
 
 interface AuthHeaderProps {
     onNavigateToApiSettings: () => void;
@@ -22,7 +23,7 @@ export const AuthHeader: React.FC<AuthHeaderProps> = ({
     onMarkAllAsRead,
     onClearAll,
 }) => {
-    const { user } = useAuth();
+    const { user, signOut } = useAuth();
     const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
     const [isNotifPanelOpen, setIsNotifPanelOpen] = useState(false);
     const notifRef = useRef<HTMLDivElement>(null);
@@ -84,6 +85,13 @@ export const AuthHeader: React.FC<AuthHeaderProps> = ({
                                 aria-label="Open User Settings"
                             >
                                 <SettingsIcon className="w-5 h-5" />
+                            </button>
+                            <button
+                                onClick={signOut}
+                                className="p-2 rounded-full bg-slate-700 text-slate-300 hover:bg-slate-600 transition-colors"
+                                aria-label="Sign Out"
+                            >
+                                <LogoutIcon className="w-5 h-5" />
                             </button>
                         </div>
                     </div>

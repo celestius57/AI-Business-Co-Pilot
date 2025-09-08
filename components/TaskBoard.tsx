@@ -42,6 +42,7 @@ export const TaskBoard: React.FC<TaskBoardProps> = ({ user, companyId, tasks, em
         if (user) {
             const userAsEmployee: Employee = {
                 id: user.id,
+                companyId: companyId,
                 name: user.name,
                 avatarUrl: user.picture,
                 jobProfile: "User",
@@ -54,7 +55,7 @@ export const TaskBoard: React.FC<TaskBoardProps> = ({ user, companyId, tasks, em
             map.set(user.id, userAsEmployee);
         }
         return map;
-    }, [employees, user]);
+    }, [employees, user, companyId]);
 
     const displayedTasks = useMemo(() => {
         return projectId ? tasks.filter(task => task.projectId === projectId) : tasks;

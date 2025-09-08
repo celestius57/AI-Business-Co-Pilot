@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { AppFile, RichTextBlock, Employee } from '../types';
 import { XMarkIcon } from './icons/XMarkIcon';
@@ -6,7 +5,8 @@ import { MagicWandIcon } from './icons/MagicWandIcon';
 import { performTextAction } from '../services/geminiService';
 import { ServiceError } from '../services/errors';
 import { RequestReviewModal } from './RequestReviewModal';
-import { useAuth } from '../contexts/GoogleAuthContext';
+// FIX: Corrected import path for useAuth
+import { useAuth } from '../contexts/AuthContext';
 import { FileIcon } from './icons/FileIcon';
 import { richTextToHtml, richTextToMarkdown } from '../utils';
 import { marked } from 'marked';
